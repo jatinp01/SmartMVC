@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Landing.cshtml";
+}
+@model SmartLion.Web.Models.LoginModel
+<div class="container">
+    @using (Html.BeginForm("Index", "Login", Model, FormMethod.Post, new { @class = "form-signin", @role = "form" }))
+    {
+        <h2 class="form-signin-heading">
+            Please log in
+        </h2>
+        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "User Name" })
+        @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+        <label class="checkbox">
+            Remember me
+            @Html.CheckBoxFor(model => model.RememberMe)
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+            Log in
+        </button>    
+    }
+</div>
+<!-- /container -->

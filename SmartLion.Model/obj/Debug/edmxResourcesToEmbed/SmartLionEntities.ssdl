@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SmartLionDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="SmartLionDBModelStoreContainer">
+    <EntitySet Name="Candidates" EntityType="SmartLionDBModel.Store.Candidates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Companies" EntityType="SmartLionDBModel.Store.Companies" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Jobs" EntityType="SmartLionDBModel.Store.Jobs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="References" EntityType="SmartLionDBModel.Store.References" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="SmartLionDBModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Status" EntityType="SmartLionDBModel.Store.Status" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StatusHistory" EntityType="SmartLionDBModel.Store.StatusHistory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="SmartLionDBModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Candidates_Companies" Association="SmartLionDBModel.Store.FK_Candidates_Companies">
+      <End Role="Companies" EntitySet="Companies" />
+      <End Role="Candidates" EntitySet="Candidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidates_Jobs" Association="SmartLionDBModel.Store.FK_Candidates_Jobs">
+      <End Role="Jobs" EntitySet="Jobs" />
+      <End Role="Candidates" EntitySet="Candidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidates_References" Association="SmartLionDBModel.Store.FK_Candidates_References">
+      <End Role="References" EntitySet="References" />
+      <End Role="Candidates" EntitySet="Candidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidates_Status" Association="SmartLionDBModel.Store.FK_Candidates_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Candidates" EntitySet="Candidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StatusHistory_Candidates" Association="SmartLionDBModel.Store.FK_StatusHistory_Candidates">
+      <End Role="Candidates" EntitySet="Candidates" />
+      <End Role="StatusHistory" EntitySet="StatusHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StatusHistory_Status" Association="SmartLionDBModel.Store.FK_StatusHistory_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="StatusHistory" EntitySet="StatusHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="SmartLionDBModel.Store.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Candidates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="InterviewDate" Type="datetime" Nullable="false" />
+    <Property Name="JoiningDate" Type="datetime" />
+    <Property Name="Salary" Type="numeric" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="JobId" Type="int" Nullable="false" />
+    <Property Name="ReferenceId" Type="int" Nullable="false" />
+    <Property Name="StatusId" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="ModifiedUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Companies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="ModifiedUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Jobs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="ModifiedUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="References">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="ModifiedUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="ModifiedUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="StatusHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="CadidateId" Type="int" Nullable="false" />
+    <Property Name="StatusId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="320" />
+    <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="70" />
+    <Property Name="PasswordSalt" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreateUserId" Type="int" />
+    <Property Name="ModifiedUserId" Type="int" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Candidates_Companies">
+    <End Role="Companies" Type="SmartLionDBModel.Store.Companies" Multiplicity="1" />
+    <End Role="Candidates" Type="SmartLionDBModel.Store.Candidates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Companies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Candidates">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidates_Jobs">
+    <End Role="Jobs" Type="SmartLionDBModel.Store.Jobs" Multiplicity="1" />
+    <End Role="Candidates" Type="SmartLionDBModel.Store.Candidates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jobs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Candidates">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidates_References">
+    <End Role="References" Type="SmartLionDBModel.Store.References" Multiplicity="1" />
+    <End Role="Candidates" Type="SmartLionDBModel.Store.Candidates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="References">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Candidates">
+        <PropertyRef Name="ReferenceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidates_Status">
+    <End Role="Status" Type="SmartLionDBModel.Store.Status" Multiplicity="1" />
+    <End Role="Candidates" Type="SmartLionDBModel.Store.Candidates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Candidates">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StatusHistory_Candidates">
+    <End Role="Candidates" Type="SmartLionDBModel.Store.Candidates" Multiplicity="1" />
+    <End Role="StatusHistory" Type="SmartLionDBModel.Store.StatusHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidates">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StatusHistory">
+        <PropertyRef Name="CadidateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StatusHistory_Status">
+    <End Role="Status" Type="SmartLionDBModel.Store.Status" Multiplicity="1" />
+    <End Role="StatusHistory" Type="SmartLionDBModel.Store.StatusHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StatusHistory">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="SmartLionDBModel.Store.Roles" Multiplicity="1" />
+    <End Role="Users" Type="SmartLionDBModel.Store.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

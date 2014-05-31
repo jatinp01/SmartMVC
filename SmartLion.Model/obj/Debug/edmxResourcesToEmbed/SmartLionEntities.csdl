@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SmartLionDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="SmartLionDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Companies" EntityType="SmartLionDBModel.Company" />
+    <EntitySet Name="Jobs" EntityType="SmartLionDBModel.Job" />
+    <EntitySet Name="References" EntityType="SmartLionDBModel.Reference" />
+    <EntitySet Name="Roles" EntityType="SmartLionDBModel.Role" />
+    <EntitySet Name="Status" EntityType="SmartLionDBModel.Status" />
+    <EntitySet Name="Users" EntityType="SmartLionDBModel.User" />
+    <AssociationSet Name="FK_Users_Roles" Association="SmartLionDBModel.FK_Users_Roles">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="Candidates" EntityType="SmartLionDBModel.Candidate" />
+    <AssociationSet Name="FK_Candidates_Companies" Association="SmartLionDBModel.FK_Candidates_Companies">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Candidate" EntitySet="Candidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidates_Jobs" Association="SmartLionDBModel.FK_Candidates_Jobs">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="Candidate" EntitySet="Candidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidates_References" Association="SmartLionDBModel.FK_Candidates_References">
+      <End Role="Reference" EntitySet="References" />
+      <End Role="Candidate" EntitySet="Candidates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Candidates_Status" Association="SmartLionDBModel.FK_Candidates_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Candidate" EntitySet="Candidates" />
+    </AssociationSet>
+    <EntitySet Name="StatusHistories" EntityType="SmartLionDBModel.StatusHistory" />
+    <AssociationSet Name="FK_StatusHistory_Candidates" Association="SmartLionDBModel.FK_StatusHistory_Candidates">
+      <End Role="Candidate" EntitySet="Candidates" />
+      <End Role="StatusHistory" EntitySet="StatusHistories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StatusHistory_Status" Association="SmartLionDBModel.FK_StatusHistory_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="StatusHistory" EntitySet="StatusHistories" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ContactNo" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Email" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" />
+    <Property Type="Int32" Name="CreateUserId" />
+    <Property Type="Int32" Name="ModifiedUserId" />
+    <NavigationProperty Name="Candidates" Relationship="SmartLionDBModel.FK_Candidates_Companies" FromRole="Company" ToRole="Candidate" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" />
+    <Property Type="Int32" Name="CreateUserId" />
+    <Property Type="Int32" Name="ModifiedUserId" />
+    <NavigationProperty Name="Candidates" Relationship="SmartLionDBModel.FK_Candidates_Jobs" FromRole="Job" ToRole="Candidate" />
+  </EntityType>
+  <EntityType Name="Reference">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="Type" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ContactNo" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" />
+    <Property Type="Int32" Name="CreateUserId" />
+    <Property Type="Int32" Name="ModifiedUserId" />
+    <NavigationProperty Name="Candidates" Relationship="SmartLionDBModel.FK_Candidates_References" FromRole="Reference" ToRole="Candidate" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Users" Relationship="SmartLionDBModel.FK_Users_Roles" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Status1" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" />
+    <Property Type="Int32" Name="CreateUserId" />
+    <Property Type="Int32" Name="ModifiedUserId" />
+    <NavigationProperty Name="Candidates" Relationship="SmartLionDBModel.FK_Candidates_Status" FromRole="Status" ToRole="Candidate" />
+    <NavigationProperty Name="StatusHistories" Relationship="SmartLionDBModel.FK_StatusHistory_Status" FromRole="Status" ToRole="StatusHistory" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="320" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="PasswordSalt" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MiddleName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" />
+    <Property Type="Int32" Name="CreateUserId" />
+    <Property Type="Int32" Name="ModifiedUserId" />
+    <Property Type="Int32" Name="RoleId" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="SmartLionDBModel.FK_Users_Roles" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_Users_Roles">
+    <End Type="SmartLionDBModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="SmartLionDBModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Candidate">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MiddleName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="ContactNo" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="InterviewDate" Nullable="false" />
+    <Property Type="DateTime" Name="JoiningDate" />
+    <Property Type="Decimal" Name="Salary" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="CompanyId" Nullable="false" />
+    <Property Type="Int32" Name="JobId" Nullable="false" />
+    <Property Type="Int32" Name="ReferenceId" Nullable="false" />
+    <Property Type="Int32" Name="StatusId" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+    <Property Type="DateTime" Name="ModifiedDate" />
+    <Property Type="Int32" Name="CreateUserId" />
+    <Property Type="Int32" Name="ModifiedUserId" />
+    <NavigationProperty Name="Company" Relationship="SmartLionDBModel.FK_Candidates_Companies" FromRole="Candidate" ToRole="Company" />
+    <NavigationProperty Name="Job" Relationship="SmartLionDBModel.FK_Candidates_Jobs" FromRole="Candidate" ToRole="Job" />
+    <NavigationProperty Name="Reference" Relationship="SmartLionDBModel.FK_Candidates_References" FromRole="Candidate" ToRole="Reference" />
+    <NavigationProperty Name="Status" Relationship="SmartLionDBModel.FK_Candidates_Status" FromRole="Candidate" ToRole="Status" />
+    <NavigationProperty Name="StatusHistories" Relationship="SmartLionDBModel.FK_StatusHistory_Candidates" FromRole="Candidate" ToRole="StatusHistory" />
+  </EntityType>
+  <Association Name="FK_Candidates_Companies">
+    <End Type="SmartLionDBModel.Company" Role="Company" Multiplicity="1" />
+    <End Type="SmartLionDBModel.Candidate" Role="Candidate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Candidate">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidates_Jobs">
+    <End Type="SmartLionDBModel.Job" Role="Job" Multiplicity="1" />
+    <End Type="SmartLionDBModel.Candidate" Role="Candidate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Candidate">
+        <PropertyRef Name="JobId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidates_References">
+    <End Type="SmartLionDBModel.Reference" Role="Reference" Multiplicity="1" />
+    <End Type="SmartLionDBModel.Candidate" Role="Candidate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reference">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Candidate">
+        <PropertyRef Name="ReferenceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Candidates_Status">
+    <End Type="SmartLionDBModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="SmartLionDBModel.Candidate" Role="Candidate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Candidate">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="StatusHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="CadidateId" Nullable="false" />
+    <Property Type="Int32" Name="StatusId" Nullable="false" />
+    <NavigationProperty Name="Candidate" Relationship="SmartLionDBModel.FK_StatusHistory_Candidates" FromRole="StatusHistory" ToRole="Candidate" />
+    <NavigationProperty Name="Status" Relationship="SmartLionDBModel.FK_StatusHistory_Status" FromRole="StatusHistory" ToRole="Status" />
+  </EntityType>
+  <Association Name="FK_StatusHistory_Candidates">
+    <End Type="SmartLionDBModel.Candidate" Role="Candidate" Multiplicity="1" />
+    <End Type="SmartLionDBModel.StatusHistory" Role="StatusHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidate">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StatusHistory">
+        <PropertyRef Name="CadidateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StatusHistory_Status">
+    <End Type="SmartLionDBModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="SmartLionDBModel.StatusHistory" Role="StatusHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StatusHistory">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

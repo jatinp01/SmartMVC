@@ -1,0 +1,7 @@
+D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Operation.Manager\bin\Debug\SmartLion.Operation.Manager.dll
+D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Operation.Manager\bin\Debug\SmartLion.Operation.Manager.pdb
+D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Operation.Manager\bin\Debug\SmartLion.Model.dll
+D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Operation.Manager\bin\Debug\SmartLion.Model.pdb
+D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Operation.Manager\obj\Debug\ResolveAssemblyReference.cache
+D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Operation.Manager\obj\Debug\SmartLion.Operation.Manager.dll
+D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Operation.Manager\obj\Debug\SmartLion.Operation.Manager.pdb

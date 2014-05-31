@@ -1,0 +1,15 @@
+﻿@model SmartLion.Web.Models.AddUserModel
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    @Model.FirstName @Model.LastName
+    <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        <li>@Html.ActionLink("Account", "Index", "Account")</li>
+        @if ((HttpContext.Current.User as SmartLion.Core.Principal.UserPrincipal).Role.ToLower() == "systemadmin")
+        {
+            <li>@Html.ActionLink("User", "Index", "User")</li>
+            <li>@Html.ActionLink("Status", "Index", "Status")</li>
+        }
+        <li class="divider"></li>
+        <li>@Html.ActionLink("Log out", "Logout", "Login")</li>
+    </ul>
+</li>
