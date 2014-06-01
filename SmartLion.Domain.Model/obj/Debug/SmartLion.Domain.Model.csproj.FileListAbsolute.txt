@@ -1,5 +1,0 @@
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Domain.Model\bin\Debug\SmartLion.Domain.Model.dll
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Domain.Model\bin\Debug\SmartLion.Domain.Model.pdb
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Domain.Model\obj\Debug\ResolveAssemblyReference.cache
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Domain.Model\obj\Debug\SmartLion.Domain.Model.dll
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Domain.Model\obj\Debug\SmartLion.Domain.Model.pdb

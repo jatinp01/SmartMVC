@@ -1,7 +1,0 @@
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Model\bin\Debug\SmartLion.Model.dll.config
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Model\bin\Debug\SmartLion.Model.dll
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Model\bin\Debug\SmartLion.Model.pdb
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Model\bin\Debug\EntityFramework.dll
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Model\obj\Debug\ResolveAssemblyReference.cache
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Model\obj\Debug\SmartLion.Model.dll
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Model\obj\Debug\SmartLion.Model.pdb

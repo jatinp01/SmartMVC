@@ -1,5 +1,0 @@
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Core\bin\Debug\SmartLion.Core.dll
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Core\bin\Debug\SmartLion.Core.pdb
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Core\obj\Debug\ResolveAssemblyReference.cache
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Core\obj\Debug\SmartLion.Core.dll
-D:\RdMap\Free-Lance\SmartLion\SmartLion\SmartLion.Core\obj\Debug\SmartLion.Core.pdb
