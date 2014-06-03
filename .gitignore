@@ -4,4 +4,7 @@
 _ReSharper.*
 bin
 obj
+App_Data
 SmartLion.suo
+*.suo
+*.suo
