@@ -15,7 +15,7 @@
          <div class="form-group">
             <label class="col-sm-2 control-label">
                 Reference Name:</label>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Reference Name" })
             </div>
             <div class="col-sm-3">
@@ -25,7 +25,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">
                 Address:</label>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.TextBoxFor(model => model.Address, new { @class = "form-control", @placeholder = "Address" })
             </div>
             <div class="col-sm-3">
@@ -35,7 +35,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">
                 Contact No:</label>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.TextBoxFor(model => model.ContactNo, new { @class = "form-control", @placeholder = "Contact No" })
             </div>
             <div class="col-sm-3">
@@ -44,9 +44,9 @@
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">
-                Type:</label>
-            <div class="col-sm-2">
-                @Html.TextBoxFor(model => model.Type, new { @class = "form-control", @placeholder = "Email" })
+               Reference Type:</label>
+            <div class="col-sm-3">
+                @Html.DropDownListFor(model => model.Type, Model.ReferenceTypes, "-- Select --", new { @class = "form-control" })
             </div>
             <div class="col-sm-3">
                 @Html.ValidationMessageFor(model => model.Type)
@@ -55,7 +55,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-5">
                 <input type="submit" name="actionType" value="Save" class="btn btn-primary"></input>
-                <input type="submit" name="actionType" value="Cancel" class="btn btn-default"></input>
+                <a href="@Url.Action("Index", "Reference")" class="btn btn-default" role="button">Cancel</a>
             </div>
         </div>
     }

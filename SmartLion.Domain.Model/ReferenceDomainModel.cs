@@ -13,4 +13,10 @@ namespace SmartLion.Domain.Model
         public string Address { get; set; }
         public string ContactNo { get; set; }
     }
+
+    public class ReferenceTypeDomainModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
 }

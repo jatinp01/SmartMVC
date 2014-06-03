@@ -12,7 +12,7 @@ namespace SmartLion.Web.Models
     {
         public int Id { get; set; }
 
-        [Required]  
+        [Required(ErrorMessage = "You can't leave Company Name empty.")]
         public string Name { get; set; }
 
         public string Address { get; set; }

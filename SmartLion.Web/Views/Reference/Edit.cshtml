@@ -44,9 +44,9 @@
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">
-                Type:</label>
+               Reference Type:</label>
             <div class="col-sm-2">
-                @Html.TextBoxFor(model => model.Type, new { @class = "form-control", @placeholder = "Email" })
+                @Html.DropDownListFor(model => model.Type, Model.ReferenceTypes, "-- Select --", new { @class = "form-control" })
             </div>
             <div class="col-sm-3">
                 @Html.ValidationMessageFor(model => model.Type)
@@ -55,7 +55,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-5">
                 <input type="submit" name="actionType" value="Save" class="btn btn-primary"></input>
-                <input type="submit" name="actionType" value="Cancel" class="btn btn-default"></input>
+                <a href="@Url.Action("Index", "Reference")" class="btn btn-default" role="button">Cancel</a>
             </div>
         </div>
     }

@@ -17,7 +17,7 @@ namespace SmartLion.Web.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "You can't leave Job Name empty.")]
         public string Name { get; set; }
     }
 
