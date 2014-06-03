@@ -95,6 +95,7 @@
     <Content Include="Global.asax" />
     <Content Include="images\favicon.ico" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\Candidate\candidate-index.js" />
     <Content Include="js\Company\company-index.js" />
     <Content Include="js\html5shiv.js" />
     <Content Include="js\Job\job-index.js" />
