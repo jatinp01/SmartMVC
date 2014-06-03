@@ -18,9 +18,10 @@ namespace SmartLion.Web.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "You can't leave User Name empty.")]
+        [Remote("IsUserNameExist", "User", ErrorMessage = "User name already exist.")]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "You can't leave Password empty.")]  
+        [Required(ErrorMessage = "You can't leave Password empty.")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "You can't leave First Name empty.")]

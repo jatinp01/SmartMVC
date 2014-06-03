@@ -100,5 +100,12 @@ namespace SmartLion.Web.Controllers
                 return Json(new { Result = "ERROR", Message = ex.Message });
             }
         }
+
+        [RoleAuthorize("SystemAdmin")]
+        public JsonResult IsUserNameExist(string UserName)
+        {
+            bool isNotExist = !UserManager.Instance.UserExist(UserName);
+            return Json(isNotExist, JsonRequestBehavior.AllowGet);
+        }
     }
 }

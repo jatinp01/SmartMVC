@@ -19,19 +19,19 @@ namespace SmartLion.Web.Controllers
         public ActionResult Index()
         {
             UserDomainModel DomainUser = UserManager.Instance.GetUserById((User as UserPrincipal).UserId);
-            Mapper.CreateMap<UserDomainModel, AddUserModel>();
-            AddUserModel model = Mapper.Map<AddUserModel>(DomainUser);
+            Mapper.CreateMap<UserDomainModel, AccountModel>();
+            AccountModel model = Mapper.Map<AccountModel>(DomainUser);
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Index(string actionType, AddUserModel model)
+        public ActionResult Index(string actionType, AccountModel model)
         {
             if (actionType.ToLowerInvariant() == "save")
             {
                 if (ModelState.IsValid)
                 {
-                    Mapper.CreateMap<AddUserModel, UserDomainModel>();
+                    Mapper.CreateMap<AccountModel, UserDomainModel>();
                     UserDomainModel DomainUser = Mapper.Map<UserDomainModel>(model);
                     UserManager.Instance.UpdateUser(DomainUser);
                 }

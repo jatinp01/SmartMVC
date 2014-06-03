@@ -34,13 +34,13 @@ namespace SmartLion.Business
             var UpdateUser = Ctx.Users
                                 .Where(x => x.Id == DomainUser.Id)
                                 .FirstOrDefault();
-            UpdateUser.UserName = DomainUser.UserName;
+            UpdateUser.UserName = string.IsNullOrEmpty(DomainUser.UserName) ? UpdateUser.UserName : DomainUser.UserName;
             UpdateUser.Password = string.IsNullOrEmpty(DomainUser.Password) ? UpdateUser.Password : DomainUser.Password;
-            UpdateUser.FirstName = DomainUser.FirstName;
-            UpdateUser.MiddleName = DomainUser.MiddleName;
-            UpdateUser.LastName = DomainUser.LastName;
-            UpdateUser.Status = DomainUser.Status;
-            UpdateUser.RoleId = DomainUser.RoleId;
+            UpdateUser.FirstName = string.IsNullOrEmpty(DomainUser.FirstName) ? UpdateUser.FirstName : DomainUser.FirstName;
+            UpdateUser.MiddleName = string.IsNullOrEmpty(DomainUser.MiddleName) ? UpdateUser.MiddleName : DomainUser.MiddleName;
+            UpdateUser.LastName = string.IsNullOrEmpty(DomainUser.LastName) ? UpdateUser.LastName : DomainUser.LastName;
+            UpdateUser.Status = (DomainUser.Status == 0) ? UpdateUser.Status : DomainUser.Status;
+            UpdateUser.RoleId = (DomainUser.RoleId == 0) ? UpdateUser.RoleId : DomainUser.RoleId;
             SaveChanges();
         }
 
@@ -104,6 +104,7 @@ namespace SmartLion.Business
                           .Where(x => x.Id == Id)
                           .Select(s => new UserDomainModel
                           {
+                              Id = s.Id,
                               UserName = s.UserName,
                               Password = s.Password,
                               FirstName = s.FirstName,
@@ -127,6 +128,13 @@ namespace SmartLion.Business
                 .Where(x => x.UserName == UserName)
                 .Select(w => w.Role.Name)
                 .FirstOrDefault();
+        }
+
+        public bool UserExist(string UserName)
+        {
+            return Context.Users
+                .Where(x => x.UserName == UserName)
+                .Any();
         }
     }
 }

@@ -2,7 +2,7 @@
     ViewBag.Title = "Account";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model SmartLion.Web.Models.AddUserModel
+@model SmartLion.Web.Models.AccountModel
 <div class="row">
     <h3 class="page-header">
         Account Management
@@ -16,6 +16,7 @@
                 Name:</label>
             <div class="col-sm-2">
                 @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Name" })
+                @Html.HiddenFor(model => model.Id)
             </div>
             <div class="col-sm-3">
                 @Html.ValidationMessageFor(model => model.UserName)
