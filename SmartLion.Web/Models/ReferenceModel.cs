@@ -24,7 +24,7 @@ namespace SmartLion.Web.Models
         public int? Type { get; set; }
         public IEnumerable<SelectListItem> ReferenceTypes
         {
-            get { return new SelectList(new List<ReferenceTypeDomainModel>() { new ReferenceTypeDomainModel() { Id = 1, Name = "Internal" }, new ReferenceTypeDomainModel() { Id = 2, Name = "External" } }, "Id", "Name"); }
+            get { return new SelectList(new List<ReferenceTypeDomainModel>() { new ReferenceTypeDomainModel() { Id = 0, Name = "Internal" }, new ReferenceTypeDomainModel() { Id = 1, Name = "External" } }, "Id", "Name"); }
         }
     }
     public class IndexReferenceModel

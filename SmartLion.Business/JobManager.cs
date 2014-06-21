@@ -52,7 +52,7 @@ namespace SmartLion.Business
 
             if (!string.IsNullOrEmpty(Search))
             {
-                JobList = Context.Jobs
+                JobList = JobList
                                   .Where(x => x.Name.Contains(Search))
                                   .OrderBy(o => o.CreateDate);
             }

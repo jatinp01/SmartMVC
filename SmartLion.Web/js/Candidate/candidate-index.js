@@ -11,11 +11,15 @@
         $.each(data.Result, function (i, Candidate) {
             htmlresponse += '<tr>';
             htmlresponse += '<td><a href="/Candidate/Edit/' + Candidate.Id + '"><span class="glyphicon glyphicon-edit"></span></a></td>';
-            htmlresponse += '<td>' + Candidate.Date + '</td>';
             htmlresponse += '<td>' + Candidate.CandidateName + '</td>';
-            htmlresponse += '<td>' + Candidate.InterviewDate + '</td>';
             htmlresponse += '<td>' + Candidate.ContactNo + '</td>';
             htmlresponse += '<td>' + Candidate.Salary + '</td>';
+            if (Candidate.IsAdmin) {
+                htmlresponse += '<td><a class="edit-status" href="#" data-id="' + Candidate.Id + '" >' + Candidate.StatusName + '</a></td>';
+            }
+            else {
+                htmlresponse += '<td>' + Candidate.StatusName + '</td>';
+            }
             htmlresponse += '<td><a href="#" class="delete" param="' + Candidate.Id + '"><span class="glyphicon glyphicon-remove"></span></a></td>';
             htmlresponse += '</tr>';
         });
@@ -54,11 +58,15 @@ $("#btnsearch").on('click', function (e) {
         $.each(data.Result, function (i, Candidate) {
             htmlresponse += '<tr>';
             htmlresponse += '<td><a href="/Candidate/Edit/' + Candidate.Id + '"><span class="glyphicon glyphicon-edit"></span></a></td>';
-            htmlresponse += '<td>' + Candidate.Date + '</td>';
             htmlresponse += '<td>' + Candidate.CandidateName + '</td>';
-            htmlresponse += '<td>' + Candidate.InterviewDate + '</td>';
             htmlresponse += '<td>' + Candidate.ContactNo + '</td>';
             htmlresponse += '<td>' + Candidate.Salary + '</td>';
+            if (Candidate.IsAdmin) {
+                htmlresponse += '<td><a class="edit-status" href="#" data-id="' + Candidate.Id + '" >' + Candidate.StatusName + '</a></td>';
+            }
+            else {
+                htmlresponse += '<td>' + Candidate.StatusName + '</td>';
+            }
             htmlresponse += '<td><a href="#" class="delete" param="' + Candidate.Id + '"><span class="glyphicon glyphicon-remove"></span></a></td>';
             htmlresponse += '</tr>';
         });
@@ -117,11 +125,15 @@ $('.pagination').on('click', '.index', function (e) {
         $.each(data.Result, function (i, Candidate) {
             htmlresponse += '<tr>';
             htmlresponse += '<td><a href="/Candidate/Edit/' + Candidate.Id + '"><span class="glyphicon glyphicon-edit"></span></a></td>';
-            htmlresponse += '<td>' + Candidate.Date + '</td>';
             htmlresponse += '<td>' + Candidate.CandidateName + '</td>';
-            htmlresponse += '<td>' + Candidate.InterviewDate + '</td>';
             htmlresponse += '<td>' + Candidate.ContactNo + '</td>';
             htmlresponse += '<td>' + Candidate.Salary + '</td>';
+            if (Candidate.IsAdmin) {
+                htmlresponse += '<td><a class="edit-status" href="#" data-id="' + Candidate.Id + '" >' + Candidate.StatusName + '</a></td>';
+            }
+            else {
+                htmlresponse += '<td>' + Candidate.StatusName + '</td>';
+            }
             htmlresponse += '<td><a href="#" class="delete" param="' + Candidate.Id + '"><span class="glyphicon glyphicon-remove"></span></a></td>';
             htmlresponse += '</tr>';
         });
@@ -196,4 +208,29 @@ $("#grid").on('click', '.delete', function (e) {
     }
     e.preventDefault();
     return false;
+});
+
+$("#grid").on('click', '.edit-status', function (e) {
+    var url = "/Candidate/EditStatus"; // the url to the controller
+    var id = $(this).attr('data-id'); // the id that's given to each button in the list
+    $.get(url + '/' + id, function (data) {
+        $('#edit-status-modal').html(data);
+        $('#edit-status-modal').modal('show');
+    });
+});
+
+$("#edit-status-modal").on('click', '#submit-status', function (e) {
+    $.ajax({
+        type: 'POST',
+        url: '/Candidate/EditStatus',
+        dataType: 'json',
+        data: { Id: parseInt($("#candidate-id").val()), StatusId: parseInt($("#StatusId").val()) },
+        success: function () {
+            $('#edit-status-modal').modal('hide');
+            $('.refresh a').click();
+        },
+        error: function () {
+            alert('error');
+        }
+    });
 });

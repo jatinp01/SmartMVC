@@ -73,8 +73,7 @@ namespace SmartLion.Business
 
             if (!string.IsNullOrEmpty(Search))
             {
-                UserList = Context.Users
-                                  .Include("Role")
+                UserList = UserList
                                   .Where(x => x.UserName.Contains(Search) || x.FirstName.Contains(Search) ||
                                    x.MiddleName.Contains(Search) || x.LastName.Contains(Search))
                                   .OrderBy(o => o.CreateDate);

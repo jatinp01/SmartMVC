@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@model SmartLion.Web.Models.CandidateModel
+@model SmartLion.Web.Models.EditCandidateModel
 <div class="row">
     <h3 class="page-header">
         Candidate Management
@@ -78,61 +78,51 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">
                     Job:</label>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     @Html.DropDownListFor(model => model.JobId, Model.Jobs, "-- Select --", new { @class = "form-control" })
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     @Html.ValidationMessageFor(model => model.JobId)
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">
                     Company:</label>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     @Html.DropDownListFor(model => model.CompanyId, Model.Companies, "-- Select --", new { @class = "form-control" })
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     @Html.ValidationMessageFor(model => model.CompanyId)
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">
                     Reference:</label>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     @Html.DropDownListFor(model => model.ReferenceId, Model.References, "-- Select --", new { @class = "form-control" })
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     @Html.ValidationMessageFor(model => model.ReferenceId)
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">
                     Salary:</label>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     @Html.TextBoxFor(model => model.Salary, new { @class = "form-control", @placeholder = "Salary" })
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     @Html.ValidationMessageFor(model => model.Salary)
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">
                     Joining Date:</label>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     @Html.TextBoxFor(model => model.JoiningDate, new { @class = "form-control datepicker", @placeholder = "Joining Date" })
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     @Html.ValidationMessageFor(model => model.JoiningDate)
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">
-                    Status:</label>
-                <div class="col-sm-4">
-                    @Html.DropDownListFor(model => model.StatusId, Model.Status, "-- Select --", new { @class = "form-control" })
-                </div>
-                <div class="col-sm-4">
-                    @Html.ValidationMessageFor(model => model.StatusId)
                 </div>
             </div>
         </div>
@@ -140,7 +130,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-4 col-sm-5">
                     <input type="submit" name="actionType" value="Save" class="btn btn-primary"></input>
-                    <input type="submit" name="actionType" value="Cancel" class="btn btn-default"></input>
+                    <a href="@Url.Action("Index", "Candidate")" class="btn btn-default" role="button">Cancel</a>
                 </div>
             </div>
         </div>

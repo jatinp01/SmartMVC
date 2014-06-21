@@ -1,0 +1,32 @@
+﻿@model SmartLion.Web.Models.EditStatusCandidateModel
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                &times;</button>
+            <h4 class="modal-title">
+                Edit Status</h4>
+        </div>
+        <div id="status-form">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        Status:</label>
+                    <div class="col-sm-5">
+                        @Html.DropDownListFor(model => model.StatusId, Model.Status, "-- Select --", new { @class = "form-control" })
+                        @Html.HiddenFor(model => model.Id, new { id = "candidate-id" })
+                    </div>
+                    <div class="col-sm-5">
+                        @Html.ValidationMessageFor(model => model.StatusId)
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close</button>
+                <input id="submit-status" type="submit" name="actionType" value="Save" class="btn btn-primary"></input>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>

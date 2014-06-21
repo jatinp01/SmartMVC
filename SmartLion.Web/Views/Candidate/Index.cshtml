@@ -44,19 +44,16 @@
                     <th>
                     </th>
                     <th>
-                        Date
-                    </th>
-                    <th>
                         Candidate Name
-                    </th>
-                    <th>
-                        Interview Date
                     </th>
                     <th>
                         Contact No
                     </th>
                     <th>
                         Salary
+                    </th>
+                    <th>
+                        Status
                     </th>
                     <th>
                     </th>
@@ -71,19 +68,25 @@
                             </span></a>
                         </td>
                         <td>
-                            @Candidate.Date
-                        </td>
-                        <td>
                             @Candidate.CandidateName
-                        </td>
-                        <td>
-                            @Candidate.InterviewDate
                         </td>
                         <td>
                             @Candidate.ContactNo
                         </td>
                         <td>
                             @Candidate.Salary
+                        </td>
+                        <td>
+                            @if ((HttpContext.Current.User as SmartLion.Core.Principal.UserPrincipal).Role.ToLower() == "systemadmin" || (HttpContext.Current.User as SmartLion.Core.Principal.UserPrincipal).Role.ToLower() == "admin")
+                            { 
+                                <a class="edit-status" href="#" data-id="@Candidate.Id" >
+                                    @Candidate.StatusName
+                                </a>
+                            }
+                            else
+                            {
+                                @Candidate.StatusName    
+                            }
                         </td>
                         <td>
                             <a href="#" class="delete" param="@Candidate.Id"><span class="glyphicon glyphicon-remove">
@@ -116,5 +119,9 @@
         </ul>
     }
 </div>
-
+<!-- Status modal -->
+<div id="edit-status-modal" class="modal fade">
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 <script src="@Url.Content("~/js/Candidate/candidate-index.js")" type="text/javascript"></script>

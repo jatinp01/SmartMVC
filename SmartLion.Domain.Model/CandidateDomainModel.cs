@@ -21,5 +21,9 @@ namespace SmartLion.Domain.Model
         public int JobId { get; set; }
         public int ReferenceId { get; set; }
         public int StatusId { get; set; }
+        public string StatusName { get; set; }
+        public int CreateUserId { get; set; }
+        public int ModifiedUserId { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

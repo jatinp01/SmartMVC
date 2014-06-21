@@ -56,7 +56,7 @@ namespace SmartLion.Business
 
             if (!string.IsNullOrEmpty(Search))
             {
-                ReferenceList = Context.References
+                ReferenceList = ReferenceList
                                   .Where(x => x.Name.Contains(Search) || x.Address.Contains(Search) ||
                                    x.ContactNo.Contains(Search))
                                   .OrderBy(o => o.CreateDate);
@@ -72,7 +72,9 @@ namespace SmartLion.Business
                 Id = x.Id,
                 Name = x.Name,
                 Address = x.Address,
-                ContactNo = x.ContactNo
+                ContactNo = x.ContactNo,
+                Type = x.Type,
+                TypeName = x.Type == 0 ? "Internal" : "External"
             });
 
             return ReferencePagedList;

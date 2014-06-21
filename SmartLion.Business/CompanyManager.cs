@@ -58,7 +58,7 @@ namespace SmartLion.Business
 
             if (!string.IsNullOrEmpty(Search))
             {
-                CompanyList = Context.Companies
+                CompanyList = CompanyList
                                   .Where(x => x.Name.Contains(Search) || x.Address.Contains(Search) ||
                                    x.ContactNo.Contains(Search) || x.Email.Contains(Search))
                                   .OrderBy(o => o.CreateDate);

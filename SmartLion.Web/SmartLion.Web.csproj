@@ -100,6 +100,7 @@
     <Content Include="js\html5shiv.js" />
     <Content Include="js\Job\job-index.js" />
     <Content Include="js\jquery-1.11.0.min.js" />
+    <Content Include="js\jquery.unobtrusive-ajax.min.js" />
     <Content Include="js\jquery.validate.min.js" />
     <Content Include="js\jquery.validate.unobtrusive.min.js" />
     <Content Include="js\Reference\reference-index.js" />
@@ -166,6 +167,7 @@
     <Content Include="Views\Candidate\Create.cshtml" />
     <Content Include="Views\Candidate\Edit.cshtml" />
     <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Candidate\EditStatus.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

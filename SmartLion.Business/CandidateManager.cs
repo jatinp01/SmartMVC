@@ -27,7 +27,8 @@ namespace SmartLion.Business
                 JobId = DomainCandidate.JobId,
                 ReferenceId = DomainCandidate.ReferenceId,
                 StatusId = DomainCandidate.StatusId,
-                CreateDate = DateTime.Now
+                CreateDate = DateTime.Now,
+                CreateUserId = DomainCandidate.CreateUserId
             };
 
             Ctx.Candidates.AddObject(AddCandidate);
@@ -50,8 +51,19 @@ namespace SmartLion.Business
             UpdateCandidate.CompanyId = DomainCandidate.CompanyId;
             UpdateCandidate.JobId = DomainCandidate.JobId;
             UpdateCandidate.ReferenceId = DomainCandidate.ReferenceId;
-            UpdateCandidate.StatusId = DomainCandidate.StatusId;
             UpdateCandidate.ModifiedDate = DateTime.Now;
+            UpdateCandidate.ModifiedUserId = DomainCandidate.ModifiedUserId;
+            SaveChanges();
+        }
+
+        public void UpdateCandidateStatus(int Id, int StatusId, int UserId)
+        {
+            var UpdateCandidate = Ctx.Candidates
+                                           .Where(x => x.Id == Id)
+                                           .FirstOrDefault();
+            UpdateCandidate.StatusId = StatusId;
+            UpdateCandidate.ModifiedDate = DateTime.Now;
+            UpdateCandidate.ModifiedUserId = UserId;
             SaveChanges();
         }
 
@@ -65,16 +77,23 @@ namespace SmartLion.Business
             SaveChanges();
         }
 
-        public PagedList<CandidateDomainModel> GetCandidate(int PageIndex, int PageSize, string Search = null)
+        public PagedList<CandidateDomainModel> GetCandidate(int PageIndex, int PageSize, int UserId, bool UserFilterOn, string Search = null)
         {
             PagedList<CandidateDomainModel> CandidatePagedList = new PagedList<CandidateDomainModel>();
 
             var CandidateList = Context.Candidates
                                   .OrderBy(o => o.CreateDate);
 
+            if (UserFilterOn)
+            {
+                CandidateList = CandidateList
+                                 .Where(x => x.CreateUserId == UserId)
+                                 .OrderBy(o => o.CreateDate);
+            }
+
             if (!string.IsNullOrEmpty(Search))
             {
-                CandidateList = Context.Candidates
+                CandidateList = CandidateList
                                   .Where(x => x.FirstName.Contains(Search) || x.MiddleName.Contains(Search) ||
                                    x.ContactNo.Contains(Search) || x.LastName.Contains(Search))
                                   .OrderBy(o => o.CreateDate);
@@ -100,7 +119,9 @@ namespace SmartLion.Business
                 CompanyId = x.CompanyId,
                 JobId = x.JobId,
                 ReferenceId = x.ReferenceId,
-                StatusId = x.StatusId
+                StatusId = x.StatusId,
+                StatusName = x.Status.Status1,
+                IsAdmin = !UserFilterOn
             });
 
             return CandidatePagedList;
